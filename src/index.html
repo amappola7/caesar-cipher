@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <section class="welcome-screen">
@@ -23,61 +19,68 @@
         <h2>Caesar's Chat</h2>
       </div>
 
-      <button class="welcome-screen__enter-button" type="button"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+      <button class="welcome-screen__enter-button enter-button-1" type="button"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
 
       <div class="welcome-screen__encrypt-chat-container">
         <p>Enter a key to encrypt your chat</p>
         <form action="#">
           <i class="fa-solid fa-key"></i>
-          <input type="number" name="key" placeholder="123">
+          <input type="number" name="key" placeholder="123" required>
+          <button class="welcome-screen__enter-button enter-button-2"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
         </form>
-        <button class="welcome-screen__enter-button" type="button"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
       </div>
+
     </section>
 
-    <header>
+    <header class="main-chat">
       <div class="header-logo">
-        <i class="fa-brands fa-pagelines"></i>
+        <i class="fa-brands fa-pagelines header-logo__icon"></i>
         <h1>Caesar's Chat</h1>
       </div>
 
-      <div class="header-decrypt-button">
-        <i class="fa-solid fa-lock"></i>
+      <div class="header__decrypt-button">
+        <button><i class="fa-solid fa-lock"></i></button>
       </div>
 
-      <div class="header-menu-button">
-        <i class="fa-solid fa-ellipsis"></i>
+      <div class="header__menu-button">
+        <button><i class="fa-solid fa-ellipsis je header__menu-icon"></i></button>
       </div>
     </header>
 
-    <main>
+    <main class="main-chat">
       <div class="main-user-message__container">
         <p class="main-user-message__text">Mensaje de Ejemplo</p>
       </div>
     </main>
 
-    <section class="decrypt-chat__container">
-      <div class="decrypt-chat__title">
-        <i class="fa-brands fa-pagelines"></i>
-        <h2>Decrypt Chat</h2>
-      </div>
+    <section class="decrypt-chat__screen">
+      <div class="decrypt-chat__container">
+        <div class="decrypt-chat__title">
+          <i class="fa-brands fa-pagelines"></i>
+          <h2>Decrypt Chat</h2>
+        </div>
 
-      <form class="decrypt-chat__key" action="#">
-        <i class="fa-solid fa-key"></i>
-        <input type="number" name="key" placeholder="123">
-        <button type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
-      </form>
+        <form class="decrypt-chat__key" action="#">
+          <i class="fa-solid fa-key"></i>
+          <input type="number" name="key" placeholder="123">
+          <button type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+        </form>
+      </div>
     </section>
 
-    <footer>
+    <footer class="main-chat">
       <form action="#">
-        <i class="fa-solid fa-align-left"></i>
-        <input type="text" placeholder="Message" name="input-user-message">
-        <button type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+        <span class="input-user-message">
+          <i class="fa-solid fa-align-left"></i>
+          <input type="text" placeholder="Message" name="input-user-message">
+        </span>
+        <button class="enter-user-message" type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
       </form>
     </footer>
 
     <!-- JS Script -->
-    <script src="index.js" type="module"></script>
+    <script src="index.js">  </script>
   </body>
 </html>
+
+<!-- type="module" -->
