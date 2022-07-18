@@ -137,8 +137,8 @@ main {
 }
 
 .main-user-message__container {
-    min-width: 2.5rem;
-    max-width: 30rem;
+    min-width: 9rem;
+    max-width: 70rem;
     width: fit-content;
     height: auto;
     min-height: 1.5rem;
