@@ -19,6 +19,7 @@ const decryptChat = document.querySelector(".decrypt-chat__container"); // Decry
 // Values
 let keyValue;
 let decryptedUserMessage;
+let encryptedUserMessage;
 
 // Initial State
 encryptChat.style.display = "none";
@@ -62,3 +63,9 @@ function showEncryptUserMessage (event) {
 
 enterUserMessage.addEventListener("click", showEncryptUserMessage);
 
+    // userMessageContainter.style.display = "";
+    // decryptedUserMessage = getUserMessage.value;
+    // keyValue = getKeyValueInput.value;
+    // encryptedUserMessage = cipher.encode(keyValue, decryptedUserMessage);
+    // userMessage.innerHTML = encryptedUserMessage;
+    // getUserMessage.value = "";
