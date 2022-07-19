@@ -1,4 +1,4 @@
-// import cipher from './cipher.js';
+import cipher from './cipher.js';
 
 // Selectors
 const welcomeScreen = document.querySelector(".welcome-screen"); // Welcome screen
@@ -51,11 +51,13 @@ function saveKeyValue (event) {
 
 enterButton2.addEventListener("click", saveKeyValue);
 
-// User message
+// User message without encrypt
 function showEncryptUserMessage (event) {
     userMessageContainter.style.display = "";
     decryptedUserMessage = getUserMessage.value;
-    userMessage.innerHTML = decryptedUserMessage;
+    keyValue = parseInt(getKeyValueInput.value, 10);
+    encryptedUserMessage = cipher.encode(keyValue, decryptedUserMessage);
+    userMessage.innerHTML = encryptedUserMessage;
     getUserMessage.value = "";
 
     event.preventDefault();
@@ -63,9 +65,3 @@ function showEncryptUserMessage (event) {
 
 enterUserMessage.addEventListener("click", showEncryptUserMessage);
 
-    // userMessageContainter.style.display = "";
-    // decryptedUserMessage = getUserMessage.value;
-    // keyValue = getKeyValueInput.value;
-    // encryptedUserMessage = cipher.encode(keyValue, decryptedUserMessage);
-    // userMessage.innerHTML = encryptedUserMessage;
-    // getUserMessage.value = "";
