@@ -6,38 +6,44 @@ const cipher = {
 
 // Encrypt Function
 function encryptFunction(key, text) {
-  let cipherText = [];
+  let cipherText = "";
 
   for (let i = 0; i < text.length; i++) {
     let letterCode = text.charCodeAt(i);
-    let cipherLetter;
-    let cipherCode;
 
     if (letterCode >= 65 && letterCode <= 90) {
-
-      cipherCode = (letterCode - 65 + key) % 26 + 65;
-      cipherLetter = String.fromCharCode(cipherCode);
-      cipherText.push(cipherLetter);
-
+      cipherText += String.fromCharCode((letterCode - 65 + key) % 26 + 65);
     } else if (letterCode >= 97 && letterCode <= 122) {
-
-      cipherCode = (letterCode - 97 + key) % 26 + 97;
-      cipherLetter = String.fromCharCode(cipherCode);
-      cipherText.push(cipherLetter);
-
+      cipherText += String.fromCharCode((letterCode - 97 + key) % 26 + 97);
     } else {
-
-      cipherText.push(text[i]);
-
+      cipherText += text[i];
     }
+  }
 
-  };
-  return cipherText.join("");
+  return cipherText;
 }
 
 // Decrypt Function
 function decryptFunction(key, text) {
+  let cipherText = "";
+
+  for (let i = 0; i < text.length; i++) {
+    let letterCode = text.charCodeAt(i);
+
+    if (letterCode >= 65 && letterCode <= 90) {
+      cipherText += String.fromCharCode((letterCode - 65 - key) % 26 + 65);
+    } else if (letterCode >= 97 && letterCode <= 122) {
+      cipherText += String.fromCharCode((letterCode - 97 - key) % 26 + 97);
+    } else {
+      cipherText += text[i];
+    }
+  }
+
+  console.log(cipherText);
+  return cipherText;
 }
+
+decryptFunction(33, 'HIJKLMNOPQRSTUVWXYZABCDEFG');
 
 // Export functions to index.js
 export default cipher;

@@ -13,13 +13,18 @@ const enterUserMessage = document.querySelector(".enter-user-message"); // Enter
 const userMessageContainter = document.querySelector(".main-user-message__container"); // User message container
 const userMessage = document.querySelector(".main-user-message__text"); // User message
 const footerChat = document.querySelector("footer"); // Main chat - Footer
-const decryptScreen = document.querySelector(".decrypt-chat__screen"); // Decrypt chat mask
-const decryptChat = document.querySelector(".decrypt-chat__container"); // Decrypt chat box container
+const decryptButton = document.querySelector(".header__decrypt-button"); // Decrypt chat button
+const decryptScreen = document.querySelector(".decrypt-chat__screen"); // Decrypt chat screen
+const decryptChatBox = document.querySelector(".decrypt-chat__container"); // Decrypt chat box container
+const decryptKeyInput = document.querySelector(".decrypt-chat__decrypt-key-input") // Key value to decrypt
+const enterKeyButton = document.querySelector(".decrypt-chat__enter-key-button"); // Enter key button to decrypt chat
 
 // Values
-let keyValue;
-let decryptedUserMessage;
+let encryptKeyValue;
+let newUserMessage;
 let encryptedUserMessage;
+let decryptKeyValue;
+let decryptedUserMessage;
 
 // Initial State
 encryptChat.style.display = "none";
@@ -27,7 +32,7 @@ headerChat.style.display = "none";
 mainChat.style.display = "none";
 footerChat.style.display = "none";
 decryptScreen.style.display = "none";
-decryptChat.style.display = "none";
+decryptChatBox.style.display = "none";
 
 // Enter to encrypt chat section
 function showEncryptChatBox (){
@@ -39,7 +44,7 @@ enterButton1.addEventListener("click", showEncryptChatBox);
 
 // Save key value - Show main chat section
 function saveKeyValue (event) {
-    keyValue = getKeyValueInput.value;
+    encryptKeyValue = getKeyValueInput.value;
     welcomeScreen.style.display = "none";
     userMessageContainter.style.display = "none";
     headerChat.style.display = "";
@@ -51,12 +56,12 @@ function saveKeyValue (event) {
 
 enterButton2.addEventListener("click", saveKeyValue);
 
-// User message without encrypt
+// User message
 function showEncryptUserMessage (event) {
     userMessageContainter.style.display = "";
-    decryptedUserMessage = getUserMessage.value;
-    keyValue = parseInt(getKeyValueInput.value, 10);
-    encryptedUserMessage = cipher.encode(keyValue, decryptedUserMessage);
+    encryptKeyValue = parseInt(getKeyValueInput.value);
+    newUserMessage = getUserMessage.value;
+    encryptedUserMessage = cipher.encode(encryptKeyValue, newUserMessage);
     userMessage.innerHTML = encryptedUserMessage;
     getUserMessage.value = "";
 
@@ -65,3 +70,29 @@ function showEncryptUserMessage (event) {
 
 enterUserMessage.addEventListener("click", showEncryptUserMessage);
 
+// Show Decrypt Chat Screen
+function showDecryptScreen () {
+    decryptScreen.style.display = "";
+    decryptChatBox.style.display = "";
+}
+
+decryptButton.addEventListener("click", showDecryptScreen);
+
+// Evaluate keys to decrypt
+function evaluateKeys (event){
+    decryptKeyValue = parseInt((decryptKeyInput.value),10);
+
+    if  (encryptKeyValue === decryptKeyValue) {
+        decryptScreen.style.display = "none";
+        decryptChatBox.style.display = "none";
+        decryptedUserMessage = cipher.decode(decryptKeyValue, encryptedUserMessage);
+        userMessage.innerHTML = decryptedUserMessage;
+        decryptKeyInput.value = "";
+    } else {
+        alert("Keys don't match");
+        decryptKeyInput.value = "";
+    }
+    event.preventDefault()
+}
+
+enterKeyButton.addEventListener("click", evaluateKeys);
