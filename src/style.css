@@ -478,3 +478,10 @@ form.decrypt-chat__key > button {
     background-color: transparent;
 }
 
+form.decrypt-chat__key > button:hover {
+    color: white;
+}
+
+form.decrypt-chat__key > button:active {
+    color: var(--grey);
+}
