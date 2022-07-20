@@ -4,7 +4,7 @@ import cipher from './cipher.js';
 const welcomeScreen = document.querySelector(".welcome-screen"); // Welcome screen
 const enterButton1 = document.querySelector(".enter-button-1"); // Welcome screen - Enter button
 const encryptChat = document.querySelector(".welcome-screen__encrypt-chat-container"); // Encrypt chat box container
-const getKeyValueInput = document.querySelector("#keyValue"); // Number input - Get key input
+const getKeyValueInput = document.querySelector("#keyValue"); // Key value to encrypt
 const enterButton2 = document.querySelector(".enter-button-2"); // Button after encrypt section
 const headerChat = document.querySelector("header"); // Main chat - Header
 const mainChat = document.querySelector("main"); // Main chat - Main section
@@ -16,14 +16,14 @@ const footerChat = document.querySelector("footer"); // Main chat - Footer
 const decryptButton = document.querySelector(".header__decrypt-button"); // Decrypt chat button
 const decryptScreen = document.querySelector(".decrypt-chat__screen"); // Decrypt chat screen
 const decryptChatBox = document.querySelector(".decrypt-chat__container"); // Decrypt chat box container
-const decryptKeyInput = document.querySelector(".decrypt-chat__decrypt-key-input") // Key value to decrypt
+const getDecryptKeyValueInput = document.querySelector("#keyValueDecrypt"); // Key value to decrypt
 const enterKeyButton = document.querySelector(".decrypt-chat__enter-key-button"); // Enter key button to decrypt chat
 
 // Values
 let encryptKeyValue;
+let decryptKeyValue;
 let newUserMessage;
 let encryptedUserMessage;
-let decryptKeyValue;
 let decryptedUserMessage;
 
 // Initial State
@@ -78,21 +78,22 @@ function showDecryptScreen () {
 
 decryptButton.addEventListener("click", showDecryptScreen);
 
-// Evaluate keys to decrypt
-function evaluateKeys (event){
-    decryptKeyValue = parseInt((decryptKeyInput.value),10);
+// Evaluate key values to decrypt
+function saveDecryptKeyValue(event) {
+    encryptKeyValue = parseInt(getKeyValueInput.value);
+    decryptKeyValue = parseInt(getDecryptKeyValueInput.value);
 
-    if  (encryptKeyValue === decryptKeyValue) {
+    if (decryptKeyValue === encryptKeyValue) {
         decryptScreen.style.display = "none";
         decryptChatBox.style.display = "none";
         decryptedUserMessage = cipher.decode(decryptKeyValue, encryptedUserMessage);
         userMessage.innerHTML = decryptedUserMessage;
-        decryptKeyInput.value = "";
+        getDecryptKeyValueInput.value = "";
     } else {
         alert("Keys don't match");
-        decryptKeyInput.value = "";
+        getDecryptKeyValueInput.value = "";
     }
-    event.preventDefault()
+    event.preventDefault();
 }
 
-enterKeyButton.addEventListener("click", evaluateKeys);
+enterKeyButton.addEventListener("click", saveDecryptKeyValue);

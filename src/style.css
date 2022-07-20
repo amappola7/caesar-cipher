@@ -485,3 +485,10 @@ form.decrypt-chat__key > button:hover {
 form.decrypt-chat__key > button:active {
     color: var(--grey);
 }
+
+.exit-without-decrypt {
+    display: none;
+
+    width: 100vw;
+    height: 100vh;
+}
