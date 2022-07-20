@@ -31,24 +31,37 @@ function decryptFunction(key, text) {
     let letterCode = text.charCodeAt(i);
 
     if (letterCode >= 65 && letterCode <= 90) {
-      cipherText += String.fromCharCode((letterCode - 65 - key) % 26 + 65);
+      let encryptCode = (letterCode - 65 - key) % 26;
+
+      if (encryptCode < 0) {
+        encryptCode = encryptCode + 65 + 26;
+        cipherText += String.fromCharCode(encryptCode);
+      } else {
+        encryptCode += 65;
+        cipherText += String.fromCharCode(encryptCode);
+      }
+
     } else if (letterCode >= 97 && letterCode <= 122) {
-      cipherText += String.fromCharCode((letterCode - 97 - key) % 26 + 97);
+      let encryptCode = (letterCode - 97 - key) % 26;
+
+      if (encryptCode < 0) {
+        encryptCode = encryptCode + 97 + 26;
+        cipherText += String.fromCharCode(encryptCode);
+      } else {
+        encryptCode += 97;
+        cipherText += String.fromCharCode(encryptCode);
+      }
+
     } else {
       cipherText += text[i];
     }
   }
 
-  console.log(cipherText);
   return cipherText;
 }
 
-decryptFunction(33, 'HIJKLMNOPQRSTUVWXYZABCDEFG');
-
 // Export functions to index.js
 export default cipher;
-
-
 
 
 
