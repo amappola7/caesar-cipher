@@ -18,6 +18,8 @@ const decryptScreen = document.querySelector(".decrypt-chat__screen"); // Decryp
 const decryptChatBox = document.querySelector(".decrypt-chat__container"); // Decrypt chat box container
 const getDecryptKeyValueInput = document.querySelector("#keyValueDecrypt"); // Key value to decrypt
 const enterKeyButton = document.querySelector(".decrypt-chat__enter-key-button"); // Enter key button to decrypt chat
+// const encryptedChatIcon = document.querySelector("i.encrypted"); // Encrypted chat icon
+// const decryptedChatIcon = document.querySelector("i.decrypted"); // Decrypted chat icon
 
 // Values
 let encryptKeyValue;

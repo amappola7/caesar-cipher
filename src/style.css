@@ -95,6 +95,10 @@ h1 {
     background-color: var(--secondary-color);
 }
 
+.header__decrypt-button i.decrypted {
+    display: none;
+}
+
 .header__decrypt-button > button:hover {
     color: #000129;
     background-color: white;
