@@ -7,9 +7,9 @@ const cipher = {
 // Encrypt Function
 function encryptFunction(key, text) {
   if (!key || !text){
-    throw new TypeError("Invalid Parameters");
+    throw new TypeError("Enter valid arguments");
   }
-  
+
   let cipherText = "";
 
   for (let i = 0; i < text.length; i++) {
@@ -30,7 +30,7 @@ function encryptFunction(key, text) {
 // Decrypt Function
 function decryptFunction(key, text) {
   if (!key || !text){
-    throw new TypeError("Invalid Parameters");
+    throw new TypeError("Enter valid arguments");
   }
 
   let cipherText = "";
