@@ -9,6 +9,7 @@
     --primary-color-variation:#CFF4FF;
     --secondary-color: #243453;
     --secondary-color-variation: #61718F;
+    --contrast-color: #FF5765;
     --grey: #b1b1b1;
 }
 
@@ -317,6 +318,20 @@ margin-right: 2rem;
     box-shadow: none;
 }
 
+.enter-button-2 {
+    color: var(--background-color);
+    background-color: white;
+}
+
+.enter-button-2:hover {
+    color: white;
+    background-color: var(--background-color);
+}
+
+.enter-button-2:active{
+    color: var(--primary-color);
+    background-color: var(--background-color);
+}
 .welcome-screen__encrypt-chat-container {
     display: flex;
     flex-direction: column;
@@ -393,6 +408,7 @@ margin-right: 2rem;
 
     width: 100vw;
     height: 100vh;
+    padding-right: 1rem;
 
     background-color: rgba(0, 1, 41, 0.4)
 }
@@ -490,9 +506,30 @@ form.decrypt-chat__key > button:active {
     color: var(--grey);
 }
 
-.exit-without-decrypt {
-    display: none;
+.exit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    position: relative;
+    top: 1.2rem;
+    right: -89.5rem;
 
-    width: 100vw;
-    height: 100vh;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 50%;
+
+    font-size: 2.5rem;
+    color: white;
+
+    background-color: var(--contrast-color);
+}
+
+.exit-button:hover {
+    background-color: var(--primary-color);
+}
+
+.exit-button:active {
+    background-color: var(--contrast-color);
 }
