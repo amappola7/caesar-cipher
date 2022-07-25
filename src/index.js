@@ -19,7 +19,7 @@ const decryptChatBox = document.querySelector(".decrypt-chat__container"); // De
 const getDecryptKeyValueInput = document.querySelector("#keyValueDecrypt"); // Key value to decrypt
 const exitButton = document.querySelector(".exit-button"); // Button to exit decrypt chat screen
 const enterKeyButton = document.querySelector(".decrypt-chat__enter-key-button"); // Enter key button to decrypt chat
-const newUserMessageContainer = document.createElement("div.main-user-message__container"); // Create new messages
+// const newUserMessageContainer = document.createElement("div.main-user-message__container"); // Create new messages
 
 // Values
 let encryptKeyValue;
@@ -76,6 +76,7 @@ enterUserMessage.addEventListener("click", showEncryptUserMessage);
 function showDecryptScreen () {
     decryptScreen.style.display = "";
     decryptChatBox.style.display = "";
+    decryptButton.style.display = "none";
 }
 
 decryptButton.addEventListener("click", showDecryptScreen);
@@ -84,6 +85,7 @@ decryptButton.addEventListener("click", showDecryptScreen);
 function hideDecryptChatScreen() {
     decryptScreen.style.display = "none";
     decryptChatBox.style.display = "none";
+    decryptButton.style.display = "";
 }
 
 exitButton.addEventListener("click", hideDecryptChatScreen);
@@ -103,6 +105,8 @@ function saveDecryptKeyValue(event) {
         alert("Keys don't match");
         getDecryptKeyValueInput.value = "";
     }
+
+    decryptButton.style.display = "";
     event.preventDefault();
 }
 
