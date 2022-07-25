@@ -40,6 +40,7 @@ decryptChatBox.style.display = "none";
 function showEncryptChatBox (){
     enterButton1.style.display = "none";
     encryptChat.style.display = "";
+    getKeyValueInput.value = "";
 }
 
 enterButton1.addEventListener("click", showEncryptChatBox);
@@ -73,9 +74,10 @@ function showEncryptUserMessage (event) {
 enterUserMessage.addEventListener("click", showEncryptUserMessage);
 
 // Show Decrypt Chat Screen
-function showDecryptScreen () {
+function showDecryptScreen (event) {
     decryptScreen.style.display = "";
     decryptChatBox.style.display = "";
+    event.preventDefault();
 }
 
 decryptButton.addEventListener("click", showDecryptScreen);
