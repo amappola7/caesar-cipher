@@ -17,9 +17,9 @@ const decryptButton = document.querySelector(".header__decrypt-button"); // Decr
 const decryptScreen = document.querySelector(".decrypt-chat__screen"); // Decrypt chat screen
 const decryptChatBox = document.querySelector(".decrypt-chat__container"); // Decrypt chat box container
 const getDecryptKeyValueInput = document.querySelector("#keyValueDecrypt"); // Key value to decrypt
+const exitButton = document.querySelector(".exit-button"); // Button to exit decrypt chat screen
 const enterKeyButton = document.querySelector(".decrypt-chat__enter-key-button"); // Enter key button to decrypt chat
-// const encryptedChatIcon = document.querySelector("i.encrypted"); // Encrypted chat icon
-// const decryptedChatIcon = document.querySelector("i.decrypted"); // Decrypted chat icon
+const newUserMessageContainer = document.createElement("div.main-user-message__container"); // Create new messages
 
 // Values
 let encryptKeyValue;
@@ -79,6 +79,14 @@ function showDecryptScreen () {
 }
 
 decryptButton.addEventListener("click", showDecryptScreen);
+
+// Hide Decrypt Chat Screen
+function hideDecryptChatScreen() {
+    decryptScreen.style.display = "none";
+    decryptChatBox.style.display = "none";
+}
+
+exitButton.addEventListener("click", hideDecryptChatScreen);
 
 // Evaluate key values to decrypt
 function saveDecryptKeyValue(event) {
